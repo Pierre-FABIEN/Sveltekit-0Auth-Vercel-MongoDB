@@ -11,7 +11,7 @@ export const connectToDatabase = async () => {
         await mongoose.connect(SECRET_API_KEY, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
-            dbName: 'DataBaseSvetlekit' 
+            dbName: 'DataBaseSveltekit' 
         });
         console.log('Connected to MongoDB');
     } catch (error) {
