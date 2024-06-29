@@ -2,7 +2,7 @@ import { addTranslations, setLocale, setRoute } from '$UITools/Translations'
 
 /** @type {import('@sveltejs/kit').Load} */
 export const load = async ({ data }) => {
-  const { i18n, translations, session, user  } = data 
+  const { i18n, translations, session, user } = data 
   const { locale, route } = i18n
 
   addTranslations(translations)

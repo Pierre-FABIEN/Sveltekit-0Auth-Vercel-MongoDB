@@ -1,5 +1,4 @@
 import type { LayoutServerLoad } from './$types'
-import jwt from 'jsonwebtoken';
 import {
   locales,
   loadTranslations,
@@ -8,34 +7,19 @@ import {
 } from '$UITools/Translations'
 import { checkAuth } from '$lib/functions/checkAuth'
 
-
 export const load: LayoutServerLoad = async (event) => {
   const { url, cookies, request, locals } = event
   const { pathname } = url
-  
+
   const session = await locals.getSession() 
 
   const user = await checkAuth(session) 
-  console.log(user);
-  
+
   if (user && session) {
-    const token = jwt.sign(
-        { id: user.id, email: user.email, role: user.role },
-        import.meta.env.SECRET_STRING,
-        { expiresIn: '1h' }
-    );
-
-    event.cookies.set('token', token, {
-        httpOnly: false,
-        secure: process.env.NODE_ENV === 'production',
-        maxAge: 60 * 60, // 1 hour
-        path: '/'
-    });
-
     session.user.role = user.role;
   }
-
-
+  console.log(session, 'session');
+  console.log(user, 'userswgeswgeswg');
 
   // Try to get the locale from cookie
   let locale = (cookies.get('lang') || '').toLowerCase()
