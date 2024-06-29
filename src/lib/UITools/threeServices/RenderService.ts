@@ -11,9 +11,6 @@ class RenderService {
 			this.renderer.shadowMap.enabled = true;
 			this.renderer.shadowMap.needsUpdate = true;
 			this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-			console.log(this.renderer);
-
-			// Le code pour ajouter le renderer au DOM sera déplacé dans le composant Svelte
 		}
 	}
 

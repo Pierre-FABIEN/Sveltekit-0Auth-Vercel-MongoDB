@@ -22,14 +22,11 @@
 		}
 	});
 
-	async function setupObserver() {
-		// console.log('Setting up observer');
+	async function setupObserver() {		
 		observer = new IntersectionObserver(
-			(entries) => {
-				// console.log('IntersectionObserver triggered');
+			(entries) => {				
 				entries.forEach((entry) => {
-					if (entry.isIntersecting) {
-						// console.log('Element is intersecting');
+					if (entry.isIntersecting) {						
 						setDomLoaded(true);
 						animateIn();
 						observer.unobserve(initalLoader);

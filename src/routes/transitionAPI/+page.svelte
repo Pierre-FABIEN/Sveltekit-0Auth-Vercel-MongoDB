@@ -28,7 +28,7 @@
 		<div class="linkabout" bind:this={link}>
 			<a class="linkabout-link" href="/transitionAPI/cible">LIEN ANIMATION</a>
 		</div>
-		<img class="logo" src="logo.svg" alt="" style:--logo="logo" />
+		<img class="logo" src="/logo.svg" alt="" style:--logo="logo" />
 	</div>
 </div>
 

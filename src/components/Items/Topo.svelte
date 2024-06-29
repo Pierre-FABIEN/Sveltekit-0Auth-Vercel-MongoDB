@@ -1,7 +1,5 @@
 <script>
   export let animated = false
-
-  $: console.log(animated)
 </script>
 
 <svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice">
