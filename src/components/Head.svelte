@@ -1,6 +1,7 @@
 <script lang="ts">
   import { page } from '$app/stores'
   import DarkMode from '$UITools/DarkMode/index.svelte'
+  import { SignIn, SignOut } from "@auth/sveltekit/components"
   import { t, locale, locales } from '$UITools/Translations/index'
   
   import FullScreen from './FullScreen.svelte'
@@ -42,6 +43,27 @@
   </nav>
 
   <div class="left-side">
+    <img
+    width="35px"
+    height="35px"
+    alt="User avatar"
+    src={$page.data?.session?.user?.image ??
+      "https://source.boringavatars.com/marble/120"}
+    class="avatar"
+  />
+    {#if $page.data.session}
+    <span class="signedInText">
+      {$page.data.session.user?.email ?? $page.data.session.user?.name}
+    </span>
+    <SignOut>
+      <div slot="submitButton" class="buttonPrimary">Sign out</div>
+    </SignOut>
+  {:else}
+    <span class="notSignedInText">You are not signed in</span>
+    <SignIn>
+      <div slot="submitButton" class="buttonPrimary">Sign in</div>
+    </SignIn>
+  {/if}
     <label for="localeSelect">{$t('data.language')}</label>
     <select
       id="localeSelect"

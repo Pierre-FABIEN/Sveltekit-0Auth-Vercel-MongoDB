@@ -18,8 +18,6 @@ export const load: LayoutServerLoad = async (event) => {
   if (user && session) {
     session.user.role = user.role;
   }
-  console.log(session, 'session');
-  console.log(user, 'userswgeswgeswg');
 
   // Try to get the locale from cookie
   let locale = (cookies.get('lang') || '').toLowerCase()
