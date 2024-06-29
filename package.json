@@ -45,6 +45,7 @@
   "type": "module",
   "dependencies": {
     "@auth/sveltekit": "latest",
+    "@prisma/client": "^5.16.1",
     "@splidejs/splide-extension-auto-scroll": "latest",
     "@splidejs/svelte-splide": "latest",
     "@sveltejs/vite-plugin-svelte": "latest",
@@ -58,7 +59,6 @@
     "flubber": "latest",
     "highlight.js": "latest",
     "mongodb": "latest",
-    "mongoose": "latest",
     "node-fetch": "latest",
     "postprocessing": "latest",
     "quoted-printable": "latest",

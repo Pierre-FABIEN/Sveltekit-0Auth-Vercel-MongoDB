@@ -15,11 +15,11 @@ export const fetchUsers = async () => {
         }
 
         const data = await res.json();
-        users.set(data.users);
-        return data.users; // Renvoie les utilisateurs pour logging
-    } catch (err) {
+        users.set(data.data); // Assurez-vous que la clé correspond au format JSON renvoyé
+        return data.data;
+    } catch (err: any) {
         error.set(err.message);
-        return null; // Renvoie null en cas d'erreur
+        return null;
     } finally {
         loading.set(false);
     }

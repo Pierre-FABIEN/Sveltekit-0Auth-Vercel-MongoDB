@@ -1,34 +1,32 @@
-// src/routes/api/+server.ts
-import { connectToDatabase } from '$lib/DB/db';
-import { User } from '$lib/DB/schema/user';
+import prisma from '$lib/prsima';
 import type { RequestHandler } from '@sveltejs/kit';
 
 export const GET: RequestHandler = async () => {
-    await connectToDatabase();
-
     try {
-        const users = await User.find();
-        console.log('Users fetched:', users); // Log des utilisateurs récupérés
-        console.log('Database name:', User.db.name); // Log du nom de la base de données
-        console.log('Collection name:', User.collection.name); // Log du nom de la collection
-        return new Response(JSON.stringify({ users }), { status: 200 });
-    } catch (error) {
-        console.error('Failed to fetch users:', error);
-        return new Response(JSON.stringify({ error: 'Failed to fetch users' }), { status: 500 });
+        console.log('Connecting to database...');
+        const data = await prisma.data.findMany();
+        console.log('Data fetched:', data);
+        return new Response(JSON.stringify({ data }), { status: 200 });
+    } catch (error: any) {
+        console.error('Failed to fetch data:', error);
+        return new Response(JSON.stringify({ error: 'Failed to fetch data', details: error.message }), { status: 500 });
     }
 };
 
 export const POST: RequestHandler = async ({ request }) => {
-    await connectToDatabase();
-
     try {
-        const data = await request.json();
-        const newUser = new User(data);
-        await newUser.save();
-        console.log('User created:', newUser); // Log de l'utilisateur créé
-        return new Response(JSON.stringify({ message: 'User created successfully' }), { status: 201 });
+        const requestData = await request.json();
+        const newData = await prisma.data.create({
+            data: {
+                name: requestData.name,
+                email: requestData.email,
+                password: requestData.password
+            }
+        });
+        console.log('Data created:', newData);
+        return new Response(JSON.stringify({ message: 'Data created successfully' }), { status: 201 });
     } catch (error) {
-        console.error('Failed to create user:', error);
-        return new Response(JSON.stringify({ error: 'Failed to create user' }), { status: 500 });
+        console.error('Failed to create data:', error);
+        return new Response(JSON.stringify({ error: 'Failed to create data', details: error.message }), { status: 500 });
     }
 };
