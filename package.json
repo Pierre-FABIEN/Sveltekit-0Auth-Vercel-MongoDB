@@ -15,6 +15,7 @@
   ],
   "devDependencies": {
     "@playwright/test": "latest",
+    "@prisma/client": "^5.16.1",
     "@rollup/plugin-terser": "latest",
     "@sveltejs/adapter-auto": "latest",
     "@sveltejs/adapter-node": "latest",
@@ -33,6 +34,7 @@
     "gsap": "latest",
     "prettier": "latest",
     "prettier-plugin-svelte": "latest",
+    "prisma": "^5.16.1",
     "sass": "latest",
     "smooth-scrollbar": "latest",
     "svelte": "latest",
@@ -45,7 +47,6 @@
   "type": "module",
   "dependencies": {
     "@auth/sveltekit": "latest",
-    "@prisma/client": "^5.16.1",
     "@splidejs/splide-extension-auto-scroll": "latest",
     "@splidejs/svelte-splide": "latest",
     "@sveltejs/vite-plugin-svelte": "latest",
