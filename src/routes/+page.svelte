@@ -18,7 +18,7 @@
   let link: HTMLElement
   let path: string | undefined | null
 
-  import { users, loading, error, fetchUsers } from '$stores/data/userStore';
+  import { users, loading, error, fetchUsers } from '$stores/Data/userStore';
 
   onNavigate((navigation) => {
     path = navigation.to?.route.id
