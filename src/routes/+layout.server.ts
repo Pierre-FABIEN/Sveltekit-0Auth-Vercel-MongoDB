@@ -5,7 +5,7 @@ import {
   translations,
   defaultLocale,
 } from '$UITools/Translations'
-import { checkAuth } from '$lib/js/functions/checkAuth'
+import { checkAuth } from '$lib/functions/checkAuth'
 
 export const load: LayoutServerLoad = async (event) => {
   const { url, cookies, request, locals } = event
