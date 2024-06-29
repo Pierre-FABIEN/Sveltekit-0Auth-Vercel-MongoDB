@@ -7,7 +7,7 @@ import {
   defaultLocale,
 } from '$UITools/Translations'
 import { checkAuth } from '$lib/functions/checkAuth'
-import { SECRET_STRING } from '$env/static/private'
+
 
 export const load: LayoutServerLoad = async (event) => {
   const { url, cookies, request, locals } = event
@@ -21,7 +21,7 @@ export const load: LayoutServerLoad = async (event) => {
   if (user && session) {
     const token = jwt.sign(
         { id: user.id, email: user.email, role: user.role },
-        SECRET_STRING,
+        import.meta.env.SECRET_STRING,
         { expiresIn: '1h' }
     );
 
