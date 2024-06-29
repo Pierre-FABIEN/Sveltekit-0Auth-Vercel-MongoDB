@@ -2,7 +2,8 @@
   import { page } from '$app/stores'
   import DarkMode from '$UITools/DarkMode/index.svelte'
   import { t, locale, locales } from '$UITools/Translations/index'
-  
+  import { SignIn, SignOut } from "@auth/sveltekit/components"
+
   import FullScreen from './FullScreen.svelte'
 
   const handleChange = (event: Event) => {
@@ -36,12 +37,38 @@
           : undefined}"
       >
         <a href="/protected">Protected</a>
-        <a href="/login">login</a>
+
       </li>
     </ul>
   </nav>
 
   <div class="left-side">
+    <div class="signedInStatus">
+      <div class="nojs-show loaded">
+        <img
+        width="25px"
+        height="25px"
+          alt="User avatar"
+          src={$page.data?.session?.user?.image ??
+            "https://source.boringavatars.com/marble/120"}
+          class="avatar"
+        />
+        {#if $page.data.session}
+          <span class="signedInText">
+            {$page.data.session.user?.email ?? $page.data.session.user?.name}
+          </span>
+          <SignOut>
+            <div slot="submitButton" class="buttonPrimary">Sign out</div>
+          </SignOut>
+        {:else}
+          <span class="notSignedInText">You are not signed in</span>
+          <SignIn>
+            <div slot="submitButton" class="buttonPrimary">Sign in</div>
+          </SignIn>
+        {/if}
+      </div>
+    </div>
+  
     <label for="localeSelect">{$t('data.language')}</label>
     <select
       id="localeSelect"
