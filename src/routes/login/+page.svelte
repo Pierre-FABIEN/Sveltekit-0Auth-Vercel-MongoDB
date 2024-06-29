@@ -1,6 +1,11 @@
 <script lang="ts">
+  import type { PageData } from "../$types";
     import { page } from "$app/stores"
     import { SignIn, SignOut } from "@auth/sveltekit/components"
+
+    export let data: PageData;
+    console.log(data)
+    
   </script>
   
 <div class="signedInStatus">
