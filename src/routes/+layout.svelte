@@ -16,6 +16,8 @@
 		setRessourceToValide
 	} from '$stores/UX/initialLoaderStore';
 
+	export let data
+
 	onNavigate(async (navigation) => {
 		if (!document.startViewTransition) return;
 
@@ -57,6 +59,8 @@
 		// Détermine le premier chargement de l'application
 		setFirstOpen(true);
 		setRessourceToValide(true);
+
+		//console.log(data, 'oiuhesiuh');		
 	});
 </script>
 

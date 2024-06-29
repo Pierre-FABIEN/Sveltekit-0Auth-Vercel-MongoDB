@@ -19,6 +19,9 @@
   let path: string | undefined | null
 
   import { users, loading, error, fetchUsers } from '$stores/Data/userStore';
+	import type { PageData } from './$types';
+
+  export let data: PageData
 
   onNavigate((navigation) => {
     path = navigation.to?.route.id
@@ -27,9 +30,10 @@
   onMount(async () => {
     setTransitionLoader(false)
     fetchMockData
-
-    const data = await fetchUsers();
-    console.log(data, "uihsfusoierfuhsifueh");
+    console.log(data, 'data');
+    
+    const qsd = await fetchUsers();
+    console.log(qsd, "uihsfusoierfuhsifueh");
   });
 
 
