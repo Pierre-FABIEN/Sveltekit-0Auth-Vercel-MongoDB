@@ -5,6 +5,7 @@ import {
   translations,
   defaultLocale,
 } from '$UITools/Translations'
+import prisma from '$lib/prisma'
 
 export const load: LayoutServerLoad = async (event) => {
   const { url, cookies, request, locals } = event
@@ -12,6 +13,53 @@ export const load: LayoutServerLoad = async (event) => {
 
   const session = await locals.getSession()
   console.log('Session:', session) // Vérifiez que la session est bien récupérée
+
+
+
+
+  if (session?.user?.email) {
+    // Vérifiez si l'utilisateur existe déjà dans la base de données
+    
+    console.log('la session existe');
+    const user = await prisma.user.findUnique({
+      where: {
+        email: session.user.email,
+      },
+    })
+
+    if (!user) {
+      // Si l'utilisateur n'existe pas, l'enregistrer dans la base de données
+      await prisma.user.create({
+        data: {
+          name: session.user.name,
+          email: session.user.email,
+          image: session.user.image,
+          role: 'user', // ou tout autre rôle par défaut que vous souhaitez attribuer
+        },
+      })
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   // Try to get the locale from cookie
   let locale = (cookies.get('lang') || '').toLowerCase()

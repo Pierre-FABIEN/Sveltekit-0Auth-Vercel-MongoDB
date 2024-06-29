@@ -1,4 +1,4 @@
-import prisma from '$lib/prsima';
+import prisma from '$lib/prisma';
 import type { RequestHandler } from '@sveltejs/kit';
 
 export const GET: RequestHandler = async () => {
@@ -25,7 +25,7 @@ export const POST: RequestHandler = async ({ request }) => {
         });
         console.log('Data created:', newData);
         return new Response(JSON.stringify({ message: 'Data created successfully' }), { status: 201 });
-    } catch (error) {
+    } catch (error: any) {
         console.error('Failed to create data:', error);
         return new Response(JSON.stringify({ error: 'Failed to create data', details: error.message }), { status: 500 });
     }
