@@ -11,10 +11,7 @@ export const load: LayoutServerLoad = async (event) => {
   const { url, cookies, request, locals } = event
   const { pathname } = url
 
-  const session = await locals.getSession()
-
-  console.log(session, 'server');
-  
+  const session = await locals.getSession() 
 
   const user = await checkAuth(session) 
 
