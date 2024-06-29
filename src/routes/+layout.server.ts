@@ -18,8 +18,6 @@ export const load: LayoutServerLoad = async (event) => {
   if (user && session) {
     session.user.role = user.role;
   }
-  console.log(session, 'session');
-  console.log(user, 'userswgeswgeswg');
 
   // Try to get the locale from cookie
   let locale = (cookies.get('lang') || '').toLowerCase()
@@ -43,7 +41,6 @@ export const load: LayoutServerLoad = async (event) => {
   await loadTranslations(locale, pathname) // Load translations for the current locale and path
 
   return {
-    user,
     session,
     i18n: { locale, route: pathname },
     translations: translations.get(), // Return loaded translations

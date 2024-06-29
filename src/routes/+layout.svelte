@@ -17,6 +17,7 @@
 	} from '$stores/UX/initialLoaderStore';
 
 	export let data
+	let token;
 
 	onNavigate(async (navigation) => {
 		if (!document.startViewTransition) return;
@@ -60,8 +61,23 @@
 		setFirstOpen(true);
 		setRessourceToValide(true);
 
-		//console.log(data, 'oiuhesiuh');		
+		//console.log(data, 'oiuhesiuh');	
+		
+		function getTokenFromCookies() {
+			const cookieValue = document.cookie
+			.split('; ')
+			.find(row => row.startsWith('token='))
+			?.split('=')[1];
+			return cookieValue;
+		}
+
+		token = getTokenFromCookies();
+
+		console.log(token);
+		
 	});
+
+
 </script>
 
 <svelte:head>
