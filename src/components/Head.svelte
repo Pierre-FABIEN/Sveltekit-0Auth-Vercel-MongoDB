@@ -37,7 +37,6 @@
           : undefined}"
       >
         <a href="/protected">Protected</a>
-        <a href="/login">login</a>
       </li>
     </ul>
   </nav>
