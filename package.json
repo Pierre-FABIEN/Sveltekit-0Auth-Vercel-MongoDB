@@ -60,6 +60,7 @@
     "eslint-plugin-svelte": "latest",
     "flubber": "latest",
     "highlight.js": "latest",
+    "jsonwebtoken": "^9.0.2",
     "mongodb": "latest",
     "node-fetch": "latest",
     "postprocessing": "latest",
