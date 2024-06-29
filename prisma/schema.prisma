@@ -1,32 +1,23 @@
-// schema.prisma
+generator client {
+  provider = "prisma-client-js"
+}
 
 datasource db {
   provider = "mongodb"
   url      = env("DATABASE_URL")
 }
 
-generator client {
-  provider = "prisma-client-js"
-}
-
-model Data {
-  id       String @id @default(auto()) @map("_id") @db.ObjectId
+model data {
+  id       String @id @map("_id")
+  email    String
   name     String
-  email    String @unique
   password String
-  @@map("data")
 }
 
-model User {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  name      String
-  email     String @unique
-  image     String?
-  role      Role     @default(USER)
-  @@map("users")
-}
-
-enum Role {
-  USER
-  ADMIN
+model users {
+  id    String @id @default(auto()) @map("_id") @db.ObjectId
+  email String
+  image String
+  name  String
+  role  String
 }
