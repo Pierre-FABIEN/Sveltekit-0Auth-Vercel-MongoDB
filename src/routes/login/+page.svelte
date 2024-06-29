@@ -29,25 +29,27 @@
 
 
 
-  <style>
-   .signedInStatus {
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-        flex-wrap: nowrap;
-        justify-content: center;
-        align-items: center;
-        align-content: center;
-    }
-    
-.nojs-show {
-    opacity: 1;
-    top: 0;
+<style>
+  .signedInStatus {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      justify-content: center;
+      align-items: center;
+      align-content: center;
   }
+    
+  .nojs-show {
+      opacity: 1;
+      top: 0;
+  }
+
   .signedInStatus {
     display: block;
     min-height: 4rem;
   }
+
   .loaded {
     position: relative;
     top: 0;
@@ -61,6 +63,7 @@
     background-color: rgba(0, 0, 0, 0.05);
     transition: all 0.2s ease-in;
   }
+
   .signedInText,
   .notSignedInText {
     justify-content: end;
@@ -72,10 +75,12 @@
     line-height: 1.3rem;
     flex: 1;
   }
+
   .signedInText {
     padding-top: 0rem;
     left: 4.6rem;
   }
+
   .avatar {
     border-radius: 2rem;
     float: left;
@@ -85,6 +90,7 @@
     background-size: cover;
     background-repeat: no-repeat;
   }
+
   .buttonPrimary {
     font-weight: 500;
     border-radius: 0.3rem;
@@ -98,7 +104,8 @@
     text-decoration: none;
     padding: 0.7rem 1.4rem;
   }
+
   .buttonPrimary:hover {
     box-shadow: inset 0 0 5rem rgba(0, 0, 0, 0.2);
   }
-  </style>
+</style>
