@@ -16,6 +16,9 @@ export const handle = sequence(authHandle, async ({ event, resolve }) => {
           email: session.user.email,
         },
       });
+
+      console.log(user);
+      
       
 
       if (user) {

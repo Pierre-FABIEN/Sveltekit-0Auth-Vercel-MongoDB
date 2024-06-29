@@ -10,7 +10,7 @@ import { checkAuth } from '$lib/functions/checkAuth'
 export const load: LayoutServerLoad = async (event) => {
   const { url, cookies, request, locals } = event
   const { pathname } = url
-
+  
   const session = await locals.getSession() 
 
   const user = await checkAuth(session) 
